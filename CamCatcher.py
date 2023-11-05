@@ -182,6 +182,9 @@ class ConsoleHandler:
         print(Helper.banner())
             
         Helper.Loading(msg=f'{colors.white}[{colors.red}{checkUpdateTime}{colors.white}] [{colors.green}info{colors.white}]{colors.yellow} Checking for updates', for_=15)
+
+        startTime = time.strftime("%H:%M:%S")
+        print(f"{colors.white}[{colors.red}{startTime}{colors.white}] [{colors.green}info{colors.white}]{colors.yellow} Welcome to {colors.red}CamCatcher{colors.yellow} , for see results type ' {colors.red}help {colors.yellow}'")
         
         while 1:
                  
@@ -217,5 +220,6 @@ class ConsoleHandler:
                     
             elif "exit" in user.split():
                 exit()
-            
-ConsoleHandler.MainActivity()
+
+if __name__ == "__main__":
+    ConsoleHandler.MainActivity()
