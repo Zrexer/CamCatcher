@@ -59,8 +59,12 @@ headers["Host"] = "www.insecam.org"
 headers["Upgrade-Insecure-Requests"] = "1"
 headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
 
-    
+
 class CamCatcher:
+    
+    numberOFIP = 0
+    numberOFIPx = 0
+    
     def getCountries():
         try:
 
@@ -89,11 +93,11 @@ class CamCatcher:
                 )
                 find_ip = re.findall(r"http://\d+.\d+.\d+.\d+:\d+", res.text)
                 
-                numberOFIP = 0
+
                 
                 for ip in find_ip:
-                    numberOFIP += 1
-                    print(f'\n{colors.white}[{colors.green}{numberOFIP}{colors.white}] {colors.red}{ip}')
+                    CamCatcher.numberOFIP += 1
+                    print(f'\n{colors.white}[{colors.green}{CamCatcher.numberOFIP}{colors.white}] {colors.red}{ip}')
         except Exception as EFI:
             print(f"\n{colors.white}{colors.BackRed}Error{colors.white}: {EFI}")
             pass
@@ -111,15 +115,14 @@ class CamCatcher:
                     headers=headers
                 )
                 find_ip = re.findall(r"http://\d+.\d+.\d+.\d+:\d+", res.text)
-
-                numberOFIP2 = 0
                 
                 for ip in find_ip:
-                    numberOFIP2 += 1
+                    
                     with open(nameFile, 'a') as save_find_ips:
                         save_find_ips.write(f'\n{ip}')
                     
-                    print(f'\n{colors.white}[{colors.green}{numberOFIP2}{colors.white}] {colors.red}{ip}')
+                    CamCatcher.numberOFIPx += 1
+                    print(f'\n{colors.white}[{colors.green}{CamCatcher.numberOFIPx}{colors.white}] {colors.red}{ip}')
                 
         except Exception as EFASI:
             print(f"\n{colors.white}{colors.BackRed}Error{colors.white}: {EFASI}")
